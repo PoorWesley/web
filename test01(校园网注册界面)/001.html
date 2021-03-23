@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+<title></title>
+</head>
+<body>	
+<form>
+<fieldset>
+<legend>用户注册页面</legend>
+<center>
+<div style="padding:5px;width=600px">
+	<h4>用户登录信息</h4>
+	<table width='100%'>
+		<tr>
+			<td width='20%'>用户名</td>
+			<td width='40%'><input id="username" type="text"  autofocus="true" pattern="^[a-zA-z0-9]{6,}$"  required="true"/> </td>				
+			<td><font color="red">*</font></td>		
+			
+		</tr>
+		<tr>
+			<td>邮箱</td>
+			<td><input type="email" id="email" type="email" required="true"/></td>
+			<td><font color="red">*</font></td>
+		</tr>
+		<tr>
+			<td>学号</td>
+			<td><input   id="idnum"   type="number"  pattern="^[0-9]$" required="true"/></td>
+			<td><font color="red">*</font> <span id="strength"></span></td>
+		</tr>
+	</table>
+</div>
+<input type="submit" value="注册新用户" onclick="reg()">
+<input type="reset" value="重置">
+</center>
+</fieldset>
+</form>
+</body>
+</html>

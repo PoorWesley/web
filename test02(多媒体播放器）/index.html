@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>diy视频播放器</title>
+	</head>
+	<body>
+		<div>
+			<video id="myvideo" src="4_1.mp4" controls="true"></video>
+		</div>
+		<div>
+			<input type="button" id ="btnPlay" 		onclick="playPause()" 	value="播放" />
+			<input type="button" id="btnSpeedUp"	onclick="speedUp()" 	value="快放" />
+			<input type="button" id="btnSpeedDown" 	onclick="speedDown()" 	value="慢放" />
+			<input type="button" id="btnVolumeUp" 	onclick="volumeUp()" 	value="音量加" />
+			<input type="button" id="btnVolumeDown" onclick="volumeDown()" 	value="音量减"/>
+			<input type="button" id="btnVolume" 	onclick="banvolume()" 	value="静音" />
+		</div>
+		
+		<div>
+			<script>
+				var speed=1;
+				var volume=1;
+				var video=document.getElementById("myvideo");
+				var playBtn=document.getElementById("btnPlay");
+				var speedupBtn=document.getElementById("btnSpeedUp");
+				var banBtn=document.getElementById("btnVolume");
+				
+				function playPause()
+				{
+					if(video.paused)
+					{
+						playBtn.value="暂停"; 		<!-- -->
+						video.play();
+						video.playbackRate=speed; 	<!-- 修改playbackRate来修改当前播放速度-->
+						video.volume=volume;		<!-- 修改volume来修改当前播放音量-->
+					}
+					else
+					{
+						playBtn.value="播放"; 		<!-- -->
+						video.pause();
+						
+					}
+				}
+				
+				function speedUp()
+				{
+					
+					if(video.playbackRate<1.75)
+					{
+						video.playbackRate+=0.25;
+					}					 
+				}
+				
+				function speedDown()
+				{
+					
+					if(video.playbackRate>0.5)
+					{
+						video.playbackRate-=0.25;
+					}					 
+				}
+				
+				function banvolume()
+				{
+					if(!video.muted)
+					{
+						banBtn.value="取消静音";
+						video.muted=true;
+					}else{
+						banBtn.value="静音";
+						video.muted=false;
+					}
+				}
+				function volumeUp()
+				{
+					if(video.volume<1)
+					{
+						video.volume+=0.1;												
+						if(video.volume>0)
+						{
+							video.muted=false;
+						}
+					}
+					volume=video.volume;
+				}
+				function volumeDown()
+				{
+					if(video.volume-0.1>0)
+					{
+						video.volume-=0.1;	
+						if(video.volume==0)
+						{
+							video.muted=true;
+						}					
+					}
+					volume=video.volume;
+				}
+				
+			</script>
+		</div>
+	</body>
+</html>
