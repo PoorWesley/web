@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>欢迎登录</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/login.css'%}" />
+    <link rel="shortcut icon" href="{% static 'media/rocket.ico' %}" type="image/x-icon">
+	<style>
+
+	</style>
+</head>
+<body>
+	<div class="log-register" align="center">
+		<br/>
+		<div class="font">登录</div>
+		<br/>
+        <form class="ui large form" method="post" action="{%url 'newLogin'%}">
+		<div class="login">
+				<input class="theInput" autocomplete="off" type="text" name="username" placeholder="请输入帐号">
+				<br />
+				<br />
+				<input class="theInput" type="password" name="password" placeholder="请输入密码">
+			</div>
+		<div>
+            {{ error }}<br>
+			<a class="forgetPas" href="{%url 'forget'%}" >忘记密码</a>
+			<br/>
+			<button class="logBtn" type="submit" name="login" >登陆</button>
+			<button class="logBtn" type="submit" name="regis">注册</button>
+		</div>
+		<div class="register"></div>
+        </form>
+	</div>
+	<div id="clou1" class="cloud"></div>
+	<div id="clou2" class="cloud"></div>
+	<div id="clou3" class="cloud"></div>
+	<div style="height: 100%; width: 100%; position:relative; z-index:-1">
+		<canvas  id="canvas"></canvas >
+		<script type="text/javascript" src="{% static 'js/wave.js'%}">	</script>
+	</div>
+</body>
+</html>

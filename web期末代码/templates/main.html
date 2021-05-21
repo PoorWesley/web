@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+	<title>welcome</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="shortcut icon" href="{% static 'media/rocket.ico' %}" type="image/x-icon">
+</head>
+<body>
+	<div id="lianjie">
+		<ul>
+			<li><a href="http://www.baidu.com.cn/" target="_blank">百度</a></li>
+			<li><a href="https://fanyi.baidu.com/?aldtype=16047#auto/zh" target="_blank">翻译</a></li>				
+			<li><a href="https://www.alltoall.net/" target="_blank">转换文件</a></li>
+			<li><a href="https://www.zhihu.com/" target="_blank">知乎</a></li>
+			<li><a href="https://www.w3school.com.cn/" target="_blank">w3school</a></li>
+			<li><a href="https://man.ilovefishc.com/html5/" target="_blank">HTML-API速查</a></li>	
+			<li><a href="https://www.cnblogs.com/chengjian-physique/p/8076356.html" target="_blank">前端开发学习路线</a></li>						
+		</ul>
+	</div>
+	<div id="clou1" class="cloud"></div>	
+	<div id="clou2" class="cloud"></div>
+	<div id="clou3" class="cloud"></div>
+	<div class="card">
+		<!--封面-->
+		<div class="card-outside" onclick="javascript:window.location.href='{% url 'newLogin' %}'">
+			<div class="out-container">
+				<!--正面-->
+				<div class="card-front">
+					<div class="front-top">
+						 <img src="{%static 'media/pic1.jpg'%}" alt="" />
+					</div>
+					<div class="front-bot">
+						View Me
+					</div>
+				</div>
+				<!--反面-->
+				<div class="card-back">
+					<video class="video-container" autoplay="autoplay" loop="loop" muted="muted">
+						<source src="{%static 'media/movie.mp4'%}" type="">
+					</video>
+				</div>
+			</div>
+		</div>
+		<!--封底-->
+		<div class="card-inside">
+			<div class="in-container">
+				<h3>For U</h3>
+				<p>
+					Please don't be in love with someone else.
+					Please don't have somebody waiting on you.
+				</p>
+				<a style="text-decoration:none;font-size: 16px;box-shadow:1px 1px 4px #808080;">click here</a></a>
+			</div>
+		</div>
+	</div>	
+	<div style="height: 100%; width: 100%; position:relative; z-index:-1">
+		<canvas  id="canvas"></canvas >	
+		<script type="text/javascript">
+			var canvas = document.getElementById('canvas'); 
+			var ctx = canvas.getContext('2d'); 
+			canvas.width = canvas.parentNode.offsetWidth; 
+			canvas.height = canvas.parentNode.offsetHeight;
+			//如果浏览器支持requestAnimFrame则使用requestAnimFrame否则使用setTimeout 
+			window.requestAnimFrame = (function(){ 
+			return window.requestAnimationFrame  || 
+				window.webkitRequestAnimationFrame || 
+				window.mozRequestAnimationFrame || 
+				function( callback ){ 
+				window.setTimeout(callback, 1000 / 60); 
+				}; 
+			})(); 
+			// 波浪大小
+			var boHeight = canvas.height / 10;
+			var posHeight = canvas.height / 1.2;
+			//初始角度为0 
+			var step = 0;  
+			//定义三条不同波浪的颜色 
+			var lines = ["rgba(0,222,255, 0.2)",
+			    "rgba(157,192,249, 0.2)", 
+			    "rgba(0,168,255, 0.2)"]; 
+			function loop(){ 
+				ctx.clearRect(0,0,canvas.width,canvas.height); 
+				step++; 
+				//画3个不同颜色的矩形 
+				for(var j = lines.length - 1; j >= 0; j--) { 
+					ctx.fillStyle = lines[j]; 
+					//每个矩形的角度都不同，每个之间相差45度 
+					var angle = (step+j*50)*Math.PI/180; 
+					var deltaHeight = Math.sin(angle) * boHeight;
+					var deltaHeightRight = Math.cos(angle) * boHeight; 
+					ctx.beginPath();
+					ctx.moveTo(0, posHeight+deltaHeight); 
+					ctx.bezierCurveTo(canvas.width/2, posHeight+deltaHeight-boHeight, canvas.width / 2, posHeight+deltaHeightRight-boHeight, canvas.width, posHeight+deltaHeightRight); 
+					ctx.lineTo(canvas.width, canvas.height); 
+					ctx.lineTo(0, canvas.height); 
+					ctx.lineTo(0, posHeight+deltaHeight); 
+					ctx.closePath(); 
+					ctx.fill(); 
+				}
+				requestAnimFrame(loop);
+			} 
+			loop(); 
+		</script>
+	</div>
+</body>
+</html>

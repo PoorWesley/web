@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>忘记密码</title>
+        <link rel="stylesheet" href="{% static 'css/forget.css'%}" />
+        <link rel="shortcut icon" href="{% static 'media/rocket.ico' %}" type="image/x-icon">
+	</head>
+	<body>
+    <form class="forgetthePass" method="post" action="{% url 'forget' %}">
+       <div class="forgetPass">
+			<br />
+			<br />
+			<div class="checkUaername">
+				<input class="inputF" autocomplete="off" type="text" name="username" placeholder="请输入用户名">
+			</div>
+			<br />
+			<div class="checkEmail">
+				<input class="inputF" type="email" name="email" placeholder="请输入邮箱">
+			</div>
+			<br />
+			<div class="restPass">
+				<input class="inputF" type="password" name="password" placeholder="请输入新的密码">
+			</div>
+			<br />
+           {{ error }}<br>
+			<div class="btnForget">
+				<button class="restBtn" type="submit">确认修改</button>
+			</div>
+           <div style="height: 100%; width: 100%; position:relative; z-index:-1">
+			<canvas  id="canvas"></canvas >
+			<script type="text/javascript" src="{% static 'js/wave.js'%}">	</script>
+		    </div>
+		</div>
+
+    </form>
+	</body>
+</html>

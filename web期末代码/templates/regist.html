@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>注册</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/regi.css'%}" />
+    <link rel="shortcut icon" href="{% static 'media/rocket.ico' %}" type="image/x-icon">
+</head>
+<body>
+	<div class="regi-register" align="center">
+		<br/>
+		<div class="font">注册</div>
+		<br/>
+		<div class="regi">
+			<form class="ui form" method="post" action="{%url 'register'%}"  enctype="multipart/form-data">
+				<input class="theInput" autocomplete="off" type="text" name="username" placeholder="请输入用户名">
+				<br />
+				<br />
+				<input class="theInput" autocomplete="off" type="password" name="password_1" placeholder="请输入密码">
+				<br />
+				<br />
+				<input class="theInput" autocomplete="off" type="password" name="password_2" placeholder="请确认密码">
+				<br />
+				<br />
+				<input class="theInput" autocomplete="off" type="nickname" name="nickname" placeholder="请输入昵称">
+				<br />
+				<br />
+				<input class="theInput"  type="email" name="email" placeholder="请输入邮箱">
+				<br>
+				{{ error }}<br>
+                <div>
+			    <br/>
+			    <br />
+			    <button class="regiBtn" type="submit">注册</button>
+		        </div>
+			</form>
+        </div>
+	</div>
+	<div id="clou1" class="cloud"></div>	
+	<div id="clou2" class="cloud"></div>
+	<div id="clou3" class="cloud"></div>
+	<div style="height: 100%; width: 100%; position:relative; z-index:-1">
+		<canvas  id="canvas"></canvas >	
+		<script type="text/javascript" src={% static 'js/wave.js'%}>	</script>
+	</div>
+</body>
+</html>
